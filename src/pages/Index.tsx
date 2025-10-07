@@ -23,7 +23,17 @@ const countries: Country[] = [
   { id: '4', name: 'Галактическая Империя', zone: 'ОСЬ', status: 'active' },
   { id: '5', name: 'Кхмерэн', zone: 'ОСЬ', status: 'upcoming', availableFrom: '1 января 2026' },
   { id: '6', name: 'Абзерстан', zone: 'ОСЬ', status: 'blocked' },
-  { id: '7', name: 'Другие страны ОСИ', zone: 'ОСИ', status: 'unavailable' },
+  { id: '7', name: 'Свободная Республика Тартасия', zone: 'ОСЬ', status: 'unavailable' },
+  { id: '8', name: 'Ягловинск', zone: 'ОСЬ', status: 'unavailable' },
+  { id: '9', name: 'Йораджистан', zone: 'ОСЬ', status: 'unavailable' },
+  { id: '10', name: 'Царан', zone: 'ОСЬ', status: 'unavailable' },
+  { id: '11', name: 'Рожская Республика', zone: 'ОСЬ', status: 'unavailable' },
+  { id: '12', name: 'Щранская Республика', zone: 'ОСЬ', status: 'unavailable' },
+  { id: '13', name: 'Зурская Республика', zone: 'ОСЬ', status: 'unavailable' },
+  { id: '14', name: 'Беблэр', zone: 'ОСЬ', status: 'unavailable' },
+  { id: '15', name: 'Граценвинск', zone: 'ОСЬ', status: 'unavailable' },
+  { id: '16', name: 'Сламодия', zone: 'ОСЬ', status: 'unavailable' },
+  { id: '17', name: 'Другие страны ОСИ', zone: 'ОСИ', status: 'unavailable' },
 ];
 
 const Index = () => {
@@ -114,7 +124,7 @@ const Index = () => {
               {selectedZone === 'all'
                 ? 'Показать все доступные страны'
                 : selectedZone === 'ОСЬ'
-                ? 'Недралическая Империя, Галактическая Империя, Кхмерэн'
+                ? 'Мы работаем над тем чтобы любая страна из ОСИ смогла пользоваться нашим сайтом'
                 : 'Герцеговинск, Блэрний'}
             </p>
           </div>
