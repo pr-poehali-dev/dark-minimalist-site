@@ -1,6 +1,5 @@
 import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
@@ -30,7 +29,6 @@ const countries: Country[] = [
 const Index = () => {
   const [selectedZone, setSelectedZone] = useState<string>('ОСЬ');
   const [selectedCountry, setSelectedCountry] = useState<string>('1');
-  const [searchQuery, setSearchQuery] = useState('');
 
   const filteredCountries = useMemo(() => {
     let filtered = countries;
@@ -39,14 +37,8 @@ const Index = () => {
       filtered = filtered.filter((c) => c.zone === selectedZone);
     }
 
-    if (searchQuery.trim()) {
-      filtered = filtered.filter((c) =>
-        c.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-
     return filtered;
-  }, [selectedZone, searchQuery]);
+  }, [selectedZone]);
 
   const selectedCountryData = countries.find((c) => c.id === selectedCountry);
 
@@ -130,20 +122,6 @@ const Index = () => {
               ВЫБОР СТРАНЫ
             </Label>
 
-            <div className="relative">
-              <Icon
-                name="Search"
-                size={18}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
-              />
-              <Input
-                placeholder="Поиск страны..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 h-12 bg-background/50 border-border/50 focus:border-primary/50"
-              />
-            </div>
-
             <Select value={selectedCountry} onValueChange={setSelectedCountry}>
               <SelectTrigger className="w-full h-14 text-base bg-background/50 border-border/50 hover:border-primary/50 transition-all">
                 <SelectValue />
@@ -162,16 +140,7 @@ const Index = () => {
                     </div>
                   </SelectItem>
                 ))}
-                {filteredCountries.length === 0 && (
-                  <div className="py-6 text-center text-muted-foreground">
-                    <p>Страны не найдены</p>
-                    {searchQuery.toLowerCase().includes('абзерстан') && (
-                      <p className="text-sm text-destructive mt-2">
-                        Абзерстан заблокирован на территории Империи
-                      </p>
-                    )}
-                  </div>
-                )}
+
               </SelectContent>
             </Select>
 
@@ -198,12 +167,18 @@ const Index = () => {
             Подтвердить выбор
           </Button>
 
-          {selectedZone === 'ОСЬ' && (
-            <p className="text-center text-sm text-muted-foreground/70 flex items-center justify-center gap-2">
-              <Icon name="Clock" size={14} />
-              Другие страны ОСИ на подходе!
+          <div className="space-y-2">
+            <p className="text-center text-sm text-muted-foreground/80 flex items-center justify-center gap-2">
+              <Icon name="AlertCircle" size={14} />
+              Страну можно менять не чаще 1 раза в месяц
             </p>
-          )}
+            {selectedZone === 'ОСЬ' && (
+              <p className="text-center text-sm text-muted-foreground/70 flex items-center justify-center gap-2">
+                <Icon name="Clock" size={14} />
+                Другие страны ОСИ на подходе!
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>
