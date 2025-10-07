@@ -11,7 +11,7 @@ type CountryStatus = 'active' | 'blocked' | 'upcoming' | 'unavailable';
 interface Country {
   id: string;
   name: string;
-  zone: 'НЗВ' | 'ОСЬ' | 'ОСИ';
+  zone: 'НЗВ' | 'ОСЬ' | 'ОСИ' | 'BLOCKED';
   status: CountryStatus;
   availableFrom?: string;
 }
@@ -22,7 +22,7 @@ const countries: Country[] = [
   { id: '3', name: 'Герцеговинск', zone: 'НЗВ', status: 'active' },
   { id: '4', name: 'Галактическая Империя', zone: 'ОСЬ', status: 'active' },
   { id: '5', name: 'Кхмерэн', zone: 'ОСЬ', status: 'upcoming', availableFrom: '1 января 2026' },
-  { id: '6', name: 'Абзерстан', zone: 'ОСЬ', status: 'blocked' },
+  { id: '6', name: 'Абзерстан', zone: 'BLOCKED', status: 'blocked' },
   { id: '7', name: 'Свободная Республика Тартасия', zone: 'ОСЬ', status: 'unavailable' },
   { id: '8', name: 'Ягловинск', zone: 'ОСЬ', status: 'unavailable' },
   { id: '9', name: 'Йораджистан', zone: 'ОСЬ', status: 'unavailable' },
@@ -45,6 +45,8 @@ const Index = () => {
 
     if (selectedZone !== 'all') {
       filtered = filtered.filter((c) => c.zone === selectedZone);
+    } else {
+      filtered = countries;
     }
 
     return filtered;
