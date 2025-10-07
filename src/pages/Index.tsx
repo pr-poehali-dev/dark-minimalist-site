@@ -104,13 +104,16 @@ const Index = () => {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
+                <SelectItem value="all">ВСЕ СТРАНЫ</SelectItem>
                 <SelectItem value="ОСЬ">ОСЬ</SelectItem>
                 <SelectItem value="НЗВ">НЗВ</SelectItem>
               </SelectContent>
             </Select>
             <p className="text-sm text-muted-foreground flex items-center gap-2">
               <Icon name="Info" size={14} />
-              {selectedZone === 'ОСЬ'
+              {selectedZone === 'all'
+                ? 'Показать все доступные страны'
+                : selectedZone === 'ОСЬ'
                 ? 'Недралическая Империя, Галактическая Империя, Кхмерэн'
                 : 'Герцеговинск, Блэрний'}
             </p>
